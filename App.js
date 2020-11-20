@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, } from 'react-native';
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
+import {enableScreens} from 'react-native-screens'
 
 import CategoriesScreen from './screens/CategoriesScreen'
 import CategoryMealsScreen from './screens/CategoryMealsScreen'
 import MealsNavigator from './navigation/MealsNavigator'
 
 
+
+enableScreens()
+// Dla polepszenia efektywności
 
 const fetchFonts = () => {
   return Font.loadAsync({

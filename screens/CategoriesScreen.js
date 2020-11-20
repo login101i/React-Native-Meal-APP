@@ -4,63 +4,48 @@ import { Text, StyleSheet, View, Button, FlatList, TouchableOpacity, Platform } 
 
 
 import { CATEGORIES } from '../data/dummy_data'
-import Colors from '../constants/Colors'
-
-
+import CategoryGridTile from '../components/CategoryGridTile'
 
 
 const CategoriesScreen = (props) => {
 
     const renderGridItem = (itemData) => {
-
-        return <TouchableOpacity style={styles.gridItem}
-            onPress={() => { props.navigation.navigate({ routeName: 'CategoryMeals', params:{categoryId:itemData.item.id} }) }}>
-
-            <View >
-                <Text>{itemData.item.title}</Text>
-            </View>
-        </TouchableOpacity>
-
+        return <CategoryGridTile
+            title={itemData.item.title}
+            color={itemData.item.color}
+            onSelect={() => {
+                props.navigation.navigate({
+                    routeName: 'CategoryMeals',
+                    params: { categoryId: itemData.item.id }
+                })
+            }}
+        />
     }
-// _______________________________________________
+
+    // _______________________________________________
+
     return (
 
-        <FlatList numColumns={2}
-            data={CATEGORIES}
-            keyExtractor={(item, index) => item.id}
-            renderItem={renderGridItem}
-            props={props}
-        />
+        <View style={styles.screen}>
+
+            <FlatList numColumns={2}
+                data={CATEGORIES}
+                keyExtractor={(item, index) => item.id}
+                renderItem={renderGridItem}
+                props={props}
+            />
+
+        </View>
+
     )
 }
 
-CategoriesScreen.navigationOptions={
-    headerTitle:'Meal Categories',
-    headerStyle:{
-        backgroundColor:Platform.OS==='android'?'purple' :''
-    },
-    headerTintColor:Platform.OS==='android'?'white':'purple'
-}
+
 
 const styles = StyleSheet.create({
-    gridItem: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 100,
-        borderWidth: 1,
-        borderColor: 'grey',
-        borderRadius: 11,
-        margin: 10,
-
-
-    },
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    }
+screen:{
+    backgroundColor:'white'
+}
 })
 
 export default CategoriesScreen
