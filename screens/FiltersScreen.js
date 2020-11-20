@@ -1,15 +1,37 @@
 import React from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import CustomHeaderButton from '../components/CustomHeaderButton'
 
 
-const FavouritesScreen = () => {
+
+const FiltersScreen = () => {
     return (
         <View style={styles.screen}>
             <Text>Hello from FilterScreen</Text>
         </View>
     )
 }
+
+FiltersScreen.navigationOptions = navData => {
+    return {
+
+        headerTitle: "Filterek",
+        headerLeft: (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
+                <Item
+                    title="Menu"
+                    iconName="ios-menu"
+                    onPress={() => {
+                        navData.navigation.toggleDrawer()
+                    }}
+                />
+            </HeaderButtons>
+        )
+    }
+}
+
 
 const styles = StyleSheet.create({
     screen: {
@@ -19,4 +41,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FavouritesScreen
+export default FiltersScreen

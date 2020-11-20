@@ -1,6 +1,9 @@
 import React from 'react'
 import { Text, StyleSheet, View, Button, FlatList, TouchableOpacity, Platform } from 'react-native'
 
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import CustomHeaderButton from '../components/CustomHeaderButton'
+
 
 
 import { CATEGORIES } from '../data/dummy_data'
@@ -41,11 +44,29 @@ const CategoriesScreen = (props) => {
 }
 
 
+CategoriesScreen.navigationOptions = navData => {
+    return {
+
+        headerTitle: "bla bla bla",
+        headerLeft: (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
+                <Item
+                    title="Menu"
+                    iconName="ios-menu"
+                    onPress={() => {
+                       navData.navigation.toggleDrawer()
+                    }}
+                />
+            </HeaderButtons>
+        )
+    }
+}
+
 
 const styles = StyleSheet.create({
-screen:{
-    backgroundColor:'white'
-}
+    screen: {
+        backgroundColor: 'white'
+    }
 })
 
 export default CategoriesScreen

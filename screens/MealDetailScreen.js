@@ -8,8 +8,9 @@ import CustomHeaderButton from '../components/CustomHeaderButton'
 
 
 const MealDetailScreen = (props) => {
-    const mealId = props.navigation.getParam('mealId')
 
+
+    const mealId = props.navigation.getParam('mealId')
     const selectedMeal = MEALS.find(meal => meal.id === mealId)
     console.log(selectedMeal)
 
@@ -20,6 +21,8 @@ const MealDetailScreen = (props) => {
     )
 }
 
+
+// ______________________________________________________________
 MealDetailScreen.navigationOptions = (navigationData) => {
     const mealId = navigationData.navigation.getParam('mealId')
     const selectedMeal = MEALS.find(meal => meal.id === mealId)
