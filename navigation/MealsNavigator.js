@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { Platform, Text } from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator, createTabNavigator } from 'react-navigation-tabs'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
@@ -19,13 +19,18 @@ import FiltersScreen from '../screens/FiltersScreen'
 const defaultNavOptions = {
     defaultNavigationOptions: {
         headerStyle: {
-            backgroundColor: Platform.OS === 'android' ? 'green' : ''
+            backgroundColor: Platform.OS === 'android' ? 'green' : 'red'
         },
-        headerTintColor: Platform.OS === 'android' ? 'white' : 'purple'
+        headerTitleStyle: {
+            fontFamily: 'open-sans-bold'
+        },
+        headerBackTitleStyle: {
+            fontFamily: 'opan-sans'
+            , headerTintColor: Platform.OS === 'android' ? 'white' : 'purple'
+        }
     }
+
 }
-
-
 
 // _________________________________________________
 const MealsNavigator = createStackNavigator({
@@ -77,7 +82,8 @@ const tabScreenConfig = {
                 />
 
             },
-            tabBarColor: "orange"
+            tabBarColor: "orange",
+            tabBarLabel:Platform.OS==='android'? (<Text style={{color:'blue'}}>Meelllls</Text>):''
         }
 
     },
@@ -105,16 +111,23 @@ const MealsFavTabNavigator = Platform.OS === 'android' ? createMaterialBottomTab
     activeColor: 'white',
     activeTintColor: 'blue',
     shifting: true,
+    barStyle:{
+        backgroundColor:colors.purple
+    }
 })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
             inactiveBackgroundColor: 'white',
             inactiveTintColor: 'green',
             activeTintColor: 'white',
-            activeBackgroundColor: 'green'
-
-        }
+            activeBackgroundColor: 'green',
+            labelStyle:{
+                fontFamily: 'open-sans'
+            }
+      
+        },
     })
+
 // _________________________________________________
 
 const FiltersNavigator = createStackNavigator({
@@ -144,7 +157,7 @@ const MainNavigator = createDrawerNavigator({
         activeTintColor: colors.grey,
         labelStyle: {
             fontFamily: 'open-sans-bold',
-            
+
         }
     }
 })
