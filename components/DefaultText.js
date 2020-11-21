@@ -11,6 +11,7 @@ export default function DefaultText(props) {
 
 const styles = StyleSheet.create({
 text:{
-    fontFamily:'roboto'
+   fontSize:22,
+   textAlign:'center'
 }
 })

@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { Text } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 
 import MealItem from '../components/MealItem'
-import { MEALS } from '../data/dummy_data'
 import MealList from '../components/MealList'
+import { useSelector } from 'react-redux'
+import DefaultText from '../components/DefaultText'
 
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
@@ -13,11 +14,19 @@ import CustomHeaderButton from '../components/CustomHeaderButton'
 
 const FavouritesScreen = (props) => {
 
-    const dummyData = MEALS.filter(meal => meal.id === 'm1' || meal.id === 'm2')
+    const favMeals = useSelector(state => state.meals.favoriteMeals)
+
+    if (favMeals.length === 0 || !favMeals) {
+        return (
+            <View style={styles.text}>
+                <DefaultText> Nie masz ulubionych produktów na ten moment.</DefaultText>
+            </View>
+        )
+    }
 
     return (
         <MealList
-            listData={dummyData}
+            listData={favMeals}
             navigation={props.navigation}
         />
     )
@@ -41,6 +50,15 @@ FavouritesScreen.navigationOptions = navData => {
     }
 }
 
+const styles = StyleSheet.create({
+    text: {
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding:20,
+     
+    }
+})
 
 
 
