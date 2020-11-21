@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallBack } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Text, StyleSheet, View, Switch } from 'react-native'
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
@@ -21,22 +21,22 @@ const FilterSwitch = props => {
     )
 }
 
-
-
 const FiltersScreen = (props) => {
 
-    const { navigation } = props
 
     const [isGlutenFree, setIsGlutenFree] = useState(false)
     const [isLactoseFree, setIsLactoseFree] = useState(false)
     const [isVegan, setIsVegan] = useState(false)
     const [isVegetarian, setIsVegetarian] = useState(false)
 
-    const saveFilters = useCallBack(() => {
+   
+    const { navigation } = props
+
+    const saveFilters = useCallback(() => {
         const appliedFilters = {
             glutenFree: isGlutenFree,
             lactoseFree: isLactoseFree,
-            vegan: isLactoseFree,
+            vegan: isVegan,
             isVegetarian: isVegetarian
         }
         console.log(appliedFilters)
