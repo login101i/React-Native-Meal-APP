@@ -17,17 +17,18 @@ import FiltersScreen from '../screens/FiltersScreen'
 
 
 const defaultNavOptions = {
-    defaultNavigationOptions: {
-        headerStyle: {
-            backgroundColor: Platform.OS === 'android' ? 'green' : 'red'
-        },
-        headerTitleStyle: {
-            fontFamily: 'open-sans-bold'
-        },
-        headerBackTitleStyle: {
-            fontFamily: 'opan-sans'
-            , headerTintColor: Platform.OS === 'android' ? 'white' : 'purple'
-        }
+    headerStyle: {
+        backgroundColor: Platform.OS === 'android' ? 'purple' : 'red'
+    },
+    headerTitleStyle: {
+        fontFamily: 'open-sans-bold'
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : "Blue",
+
+
+    headerBackTitleStyle: {
+        fontFamily: 'opan-sans'
+        , headerTintColor: Platform.OS === 'android' ? 'white' : 'purple'
     }
 
 }
@@ -38,7 +39,7 @@ const MealsNavigator = createStackNavigator({
     Categories: {
         screen: CategoriesScreen,
         navigationOptions: {
-            headerTitle: 'Meals Categories',
+            headerTitle: 'Potrawy w McRestaurant',
         }
     },
 
@@ -83,7 +84,7 @@ const tabScreenConfig = {
 
             },
             tabBarColor: "orange",
-            tabBarLabel:Platform.OS==='android'? (<Text style={{color:'blue'}}>Meelllls</Text>):''
+            tabBarLabel: Platform.OS === 'android' ? (<Text style={{ color: 'white' }}>Potrawy</Text>) : ''
         }
 
     },
@@ -111,8 +112,8 @@ const MealsFavTabNavigator = Platform.OS === 'android' ? createMaterialBottomTab
     activeColor: 'white',
     activeTintColor: 'blue',
     shifting: true,
-    barStyle:{
-        backgroundColor:colors.purple
+    barStyle: {
+        backgroundColor: colors.purple
     }
 })
     : createBottomTabNavigator(tabScreenConfig, {
@@ -121,10 +122,10 @@ const MealsFavTabNavigator = Platform.OS === 'android' ? createMaterialBottomTab
             inactiveTintColor: 'green',
             activeTintColor: 'white',
             activeBackgroundColor: 'green',
-            labelStyle:{
+            labelStyle: {
                 fontFamily: 'open-sans'
             }
-      
+
         },
     })
 
@@ -164,4 +165,3 @@ const MainNavigator = createDrawerNavigator({
 
 
 export default createAppContainer(MainNavigator)
-

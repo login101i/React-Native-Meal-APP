@@ -8,6 +8,7 @@ import { CATEGORIES } from '../data/dummy_data'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import CustomHeaderButton from '../components/CustomHeaderButton'
 import DefaultText from '../components/DefaultText'
+import Colors from '../constants/Colors'
 
 const ListItem = props => {
     return (
@@ -29,6 +30,8 @@ const MealDetailScreen = (props) => {
     useEffect(() => {
         props.navigation.setParams({ isFav: currentMealIsFavorite })
     }, [currentMealIsFavorite])
+
+
 
 
     const dispatch = useDispatch()
@@ -126,7 +129,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'open-sans-bold',
         padding: 11,
-        backgroundColor: 'rgba(0,0,0,0.6)',
+        backgroundColor:Colors.purple,
         textAlign: 'center'
     },
     listItem: {

@@ -11,7 +11,6 @@ export default function DefaultText(props) {
 
 const styles = StyleSheet.create({
 text:{
-   fontSize:22,
-   textAlign:'center'
+   fontSize:16,
 }
 })

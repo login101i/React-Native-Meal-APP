@@ -30,6 +30,7 @@ export default function MealList(props) {
         />
     }
 
+    
 
     return (
         <View style={styles.list}>

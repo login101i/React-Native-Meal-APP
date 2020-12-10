@@ -19,6 +19,8 @@ export default function MealItem(props) {
                                 style={styles.title}
                             // numberOfLines={1}
                             >{props.title}</Text>
+
+                            
                         </ImageBackground>
                     </View>
                     <View style={{ ...styles.mealRow, ...styles.mealDetail }}>

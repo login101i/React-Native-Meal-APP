@@ -52,25 +52,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 'auto',
         height: 152,
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: 'grey',
-        borderRadius: 11,
+        borderRadius: 18,
         margin: 10,
         overflow: 'hidden',
         elevation:12,
-
-
     },
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    },
+    
     title: {
         fontFamily: 'open-sans-bold',
         fontSize: 22,
-        textAlign: 'right'
+        textAlign: 'right',
+        color:'#111',
+        fontWeight:"600",
     }
 })
 
